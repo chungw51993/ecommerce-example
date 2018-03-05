@@ -39,6 +39,9 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(morgan('dev'));
 app.use(allowCrossDomain);
 
+import router from './routes';
+
+app.use(router);
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 if (isDeveloping) {
