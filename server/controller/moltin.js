@@ -5,6 +5,8 @@ const Moltin = gateway({
   client_secret: process.env.MOLTIN_SECRET
 });
 
+const guestNum = 0;
+
 const moltinController = {
   authenticate: (req, res, next) => {
     Moltin.Authenticate()
@@ -33,10 +35,18 @@ const moltinController = {
         res.status(500).json(err);
       });
   },
+  getCart: (req, res) => {
+    Moltin.Cart('testCart').Items()
+      .then((cart) => {
+        res.status(200).json(cart);
+      }).catch((err) => {
+        res.status(500).json(err);
+      });
+  },
   addToCart: (req, res) => {
     const { pid } = req.body;
 
-    Moltin.Cart.AddProduct(pid, 1)
+    Moltin.Cart('testCart').AddProduct(pid, 1)
       .then((item) => {
         res.status(200).json(item);
       }).catch((err) => {
