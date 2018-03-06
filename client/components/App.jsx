@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import ProductList from './products/Products';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -29,9 +31,12 @@ class App extends Component {
   }
 
   render() {
+    const { items } = this.state;
+
     return(
       <section id="app">
-        <h1>Jin's Sports and Goods</h1>
+        <h1>Sports and Goods</h1>
+        <ProductList products={items} />
       </section>
     );
   }
