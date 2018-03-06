@@ -8,7 +8,10 @@ class App extends Component {
     super(props);
 
     this.state = {
-      items: [],
+      items: {
+        products: [],
+        images: [],
+      },
     };
   }
 
@@ -22,8 +25,12 @@ class App extends Component {
       url: '/api/product',
     }).then((resp) => {
       const { data } = resp;
+      const items = {
+        products: data.data,
+        images: data.included.main_images,
+      }
       this.setState({
-        items: data.data,
+        items,
       });
     }).catch((err) => {
       console.error(err);

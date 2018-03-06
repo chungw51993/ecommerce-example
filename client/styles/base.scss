@@ -2,3 +2,16 @@ $screen-medium: "only screen and (max-width : 997px)";
 $screen-small: "only screen and (max-width : 768px)";
 $screen-xsmall: "only screen and (max-width : 450px)";
 
+div.product-list {
+  display: flex;
+  flex-direction: row;
+  .product-item {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    margin-right: 20px;
+    img {
+      width: 200px;
+    }
+  }
+}

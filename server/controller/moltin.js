@@ -18,7 +18,7 @@ const moltinController = {
       })
   },
   getAllProduct: (req, res) => {
-    Moltin.Products.All()
+    Moltin.Products.With('main_image').All()
       .then((prods) => {
         res.status(200).json(prods);
       }).catch((err) => {
