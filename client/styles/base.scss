@@ -2,16 +2,33 @@ $screen-medium: "only screen and (max-width : 997px)";
 $screen-small: "only screen and (max-width : 768px)";
 $screen-xsmall: "only screen and (max-width : 450px)";
 
-div.product-list {
-  display: flex;
-  flex-direction: row;
-  .product-item {
-    display: flex;
-    flex-direction: column;
+section#layout {
+  margin-left: 20px;
+  margin-right: 20px;
+  .cart-button {
+    text-decoration: none;
+    color: white;
     border-style: solid;
-    margin-right: 20px;
-    img {
-      width: 200px;
+    padding: 5px 7px 5px 7px;
+    background-color: gray;
+    font-size: 20px;
+    border-radius: 25%;
+  }
+}
+
+section#home {
+  margin-top: 30px;
+  .product-list {
+    display: flex;
+    flex-direction: row;
+    .product-item {
+      display: flex;
+      flex-direction: column;
+      border-style: solid;
+      margin-right: 20px;
+      img {
+        width: 200px;
+      }
     }
   }
 }
