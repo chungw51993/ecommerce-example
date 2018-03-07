@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import ProductList from './products/Products';
+import ProductList from './Products';
 
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
 
@@ -41,12 +41,14 @@ class App extends Component {
     const { items } = this.state;
 
     return(
-      <section id="app">
-        <h1>Sports and Goods</h1>
-        <ProductList products={items} />
+      <section id="home">
+        <ProductList
+          products={items}
+          redirect={this.props.history}
+        />
       </section>
     );
   }
 }
 
-export default App;
+export default Home;

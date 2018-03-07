@@ -11,6 +11,7 @@ class ProductList extends Component {
             <ProductItem
               product={product}
               image={images[i]}
+              redirect={this.props.redirect}
               key={product.id}
             />
           )
@@ -23,17 +24,24 @@ class ProductList extends Component {
 class ProductItem extends Component {
   constructor(props) {
     super(props);
+
+    this.goToUrl = this.goToUrl.bind(this);
+  }
+
+  goToUrl() {
+    this.props.redirect.push(`/${this.props.product.id}`)
   }
 
   render() {
     const { product, image } = this.props;
 
     return(
-      <div className="product-item">
+      <div className="product-item" onClick={this.goToUrl}>
         <img src={image.link.href} />
         <div>Name: { product.name }</div>
         <div>Desc: { product.description }</div>
         <div>Price: { product.meta.display_price.with_tax.formatted }</div>
+        <button>Add to Cart</button>
       </div>
     );
   }

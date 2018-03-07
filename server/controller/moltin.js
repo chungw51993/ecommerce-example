@@ -28,7 +28,7 @@ const moltinController = {
   getProduct: (req, res) => {
     const { pid } = req.params;
 
-    Moltin.Products.Get(pid)
+    Moltin.Products.With('main_image').Get(pid)
       .then((prod) => {
         res.status(200).json(prod);
       }).catch((err) => {
