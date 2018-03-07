@@ -22,7 +22,6 @@ class Detail extends Component {
       method: 'GET',
       url: `/api/product/${location.pathname.split('/')[1]}`
     }).then((prod) => {
-      console.log(prod);
       const { data } = prod.data;
       const { main_images } = prod.data.included;
       this.setState({
