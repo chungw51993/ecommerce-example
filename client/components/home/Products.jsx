@@ -12,6 +12,7 @@ class ProductList extends Component {
               product={product}
               image={images[i]}
               redirect={this.props.redirect}
+              add={this.props.add}
               key={product.id}
             />
           )
@@ -36,12 +37,14 @@ class ProductItem extends Component {
     const { product, image } = this.props;
 
     return(
-      <div className="product-item" onClick={this.goToUrl}>
+      <div className="product-item">
         <img src={image.link.href} />
-        <div>Name: { product.name }</div>
+        <div onClick={this.goToUrl}>Name: { product.name }</div>
         <div>Desc: { product.description }</div>
         <div>Price: { product.meta.display_price.with_tax.formatted }</div>
-        <button>Add to Cart</button>
+        <button
+          onClick={() => this.props.add(product.id)}
+        >Add to Cart</button>
       </div>
     );
   }
