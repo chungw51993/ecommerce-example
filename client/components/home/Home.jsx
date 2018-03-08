@@ -79,10 +79,9 @@ class Home extends Component {
           placement="bottom"
           container={this}
           target={this.refs.cart}
-          show={this.state.open}
+          show={true}
           onHide={this.handleClose.bind(this)}
           containerStyle={{
-            marginTop: '35px',
           }}>
           <p>This is popover</p>
         </Popover>

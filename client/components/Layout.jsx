@@ -7,7 +7,9 @@ class Layout extends Component {
     super(props);
   }
 
-
+  componentDidMount() {
+    console.log(this.refs);
+  }
 
   render() {
     return(

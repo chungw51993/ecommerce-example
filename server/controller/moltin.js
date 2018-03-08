@@ -1,4 +1,5 @@
 import { gateway } from '@moltin/sdk';
+import axios from 'axios';
 
 const Moltin = gateway({
   client_id: process.env.MOLTIN_ID,
@@ -33,6 +34,37 @@ const moltinController = {
         res.status(200).json(prod);
       }).catch((err) => {
         res.status(500).json(err);
+      });
+  },
+  addStock: (req, res) => {
+    const { amount } = req.body;
+    const { pid } = req.params;
+
+    Moltin.Authenticate()
+      .then((resp) => {
+        console.log('Moltin autenticated ', resp);
+        axios({
+          method: 'POST',
+          url: `https://api.moltin.com/v2/inventories/${pid}/transactions`,
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${resp.access_token}`,
+          },
+          data: {
+            type: 'stock-transaction',
+            action: 'increment',
+            quantity: 100,
+          },
+        }).then((stock) => {
+          console.log(stock, '<<<<<<<<<<')
+          res.status(200).send();
+        }).catch((err) => {
+          console.error(err);
+          res.status(500).send();
+        });
+      }).catch((err) => {
+        console.error(err);
+        res.status(500).send();
       });
   },
   getCart: (req, res) => {
