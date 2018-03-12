@@ -8,38 +8,27 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.addToCart = this.addToCart.bind(this);
-
-    this.state = {
-      items: {
-        products: [],
-        images: [],
-      },
-      product: {},
-      open: false,
-    };
   }
 
   componentDidMount() {
-    this.getAllItems();
   }
 
   getAllItems() {
-    axios({
-      method: 'GET',
-      url: '/api/product',
-    }).then((resp) => {
-      const { data } = resp;
-      const items = {
-        products: data.data,
-        images: data.included.main_images,
-      }
-      this.setState({
-        items,
-      });
-    }).catch((err) => {
-      console.error(err);
-    });
+    // axios({
+    //   method: 'GET',
+    //   url: '/api/product',
+    // }).then((resp) => {
+    //   const { data } = resp;
+    //   const items = {
+    //     products: data.data,
+    //     images: data.included.main_images,
+    //   }
+    //   this.setState({
+    //     items,
+    //   });
+    // }).catch((err) => {
+    //   console.error(err);
+    // });
   }
 
   addToCart(pid) {
